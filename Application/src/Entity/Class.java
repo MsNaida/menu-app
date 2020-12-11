@@ -5,7 +5,7 @@ public class Class {
 	private int classId;
 	private String className;
 	
-	public Class(int classId, int teacherId, int studentId, String className) {
+	public Class(int classId, String className) {
 		this.setClassId(classId);
 		this.setClassName(className);
 	}

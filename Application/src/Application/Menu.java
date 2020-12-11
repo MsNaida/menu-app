@@ -1,5 +1,9 @@
 package Application;
 
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
@@ -8,15 +12,25 @@ import Entity.Class;
 import Entity.Teacher;
 import Entity.Student;
 import Dao.ClassDao;
+import Dao.DBConnection;
 import Dao.TeacherDao;
 import Dao.StudentDao;
 
 public class Menu {
 	
+	private Connection connection;
+	
+	public Menu() {
+		connection = DBConnection.getConnection();
+	}
+	
 	ClassDao classDao = new ClassDao();
 	TeacherDao teacherDao = new TeacherDao();
 	StudentDao studentDao = new StudentDao();
 	private Scanner scanner = new Scanner(System.in);
+	
+	private final String INSERT_STUDENT = "INSERT INTO student (classId, grade, studentName) VALUES (?, ?, ?)";
+	
 	private List<String> options = Arrays.asList(
 													"Add Class",
 													"Show Class",
@@ -81,6 +95,7 @@ public class Menu {
 			
 		} while (!selection.equals("-1"));
 	}
+	
 
 
 	private void printMenu() {
