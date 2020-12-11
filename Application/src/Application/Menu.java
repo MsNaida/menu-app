@@ -118,7 +118,11 @@ public class Menu {
 		
 	}
 	private void updateClass() throws SQLException {
-		
+		System.out.println("Enter ID Of The Class You'd Like To Update:  ");
+		int classId = Integer.parseInt(scanner.nextLine());
+		System.out.println("Enter Updated Class Name: ");
+		String className = scanner.nextLine();
+		classDao.updateClassById(classId ,className);
 	}
 	private void deleteClass() throws SQLException {
 		

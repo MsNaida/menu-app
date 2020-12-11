@@ -14,7 +14,7 @@ public class ClassDao {
 	private Connection connection;
 	
 	//Insert The MYSQL private Final Strings in here
-	
+	private final String UPDATE_CLASS_BY_ID = "UPDATE class SET  className = ? WHERE id = ?";
 	
 	public ClassDao() {
 		connection = DBConnection.getConnection();
@@ -22,6 +22,11 @@ public class ClassDao {
 
 	
 	//finish coding and setting the prepared statements
-	
+	public void updateClassById (int id, String className) throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(UPDATE_CLASS_BY_ID);
+		ps.setString(1, className);
+		ps.setInt(2, id);
+		ps.executeUpdate();
+	}	
 	
 }
