@@ -15,6 +15,8 @@ public class StudentDao {
 
 	private Connection connection;
 	
+	
+	private final String UPDATE_STUDENT_BY_ID = "UPDATE student SET grade = ?, studentName = ? WHERE id = ?";
 	//Insert The MYSQL private Final Strings in here
 	
 	
@@ -25,5 +27,6 @@ public class StudentDao {
 
 	
 	//finish coding and setting the prepared statements
+
 	
 }
